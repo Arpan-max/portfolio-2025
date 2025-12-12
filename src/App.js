@@ -48,7 +48,7 @@ function App() {
         </div>
       </nav>
 
-      {/* 3. HERO SECTION (Animation is now handled in CSS) */}
+      {/* 3. HERO SECTION */}
       <header className="hero-section">
         <motion.div
           initial="hidden"
@@ -139,7 +139,7 @@ function App() {
         </div>
       </section>
 
-      {/* 6. AESTHETIC SERVICE BOXES */}
+      {/* 6. AESTHETIC SERVICE BOXES (UPDATED) */}
       <section id="services" className="services-section">
         <div className="section-header">
             <h3>Our Expertise</h3>
@@ -155,6 +155,9 @@ function App() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
+              {/* THE NEW WATERMARK */}
+              <div className="watermark">0{index + 1}</div>
+
               <div className="card-top">
                 <span className="card-num">0{index + 1}</span>
                 <span className="arrow">↗</span>
