@@ -20,8 +20,11 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-.dark-mode { background-color: #0a0a0a; color: #ffffff; }
-.light-mode { background-color: #fcfcfc; color: #1a1a1a; }
+/* Dark Mode: Pure Black Background */
+.dark-mode { background-color: #050505; color: #ffffff; }
+
+/* Light Mode: Off-White Background */
+.light-mode { background-color: #f2f2f2; color: #1a1a1a; }
 
 /* NOISE TEXTURE */
 .noise-overlay {
@@ -88,8 +91,6 @@ body {
   text-align: center;
   padding-top: 60px;
   position: relative;
-  
-  /* ANIMATION CONFIG */
   background: linear-gradient(120deg, #141E30, #243B55, #6a11cb, #2575fc);
   background-size: 400% 400%;
   animation: gradientBG 8s ease infinite;
@@ -150,7 +151,7 @@ body {
 .span-2 { grid-column: span 2; }
 .span-row-2 { grid-row: span 2; }
 
-/* --- SERVICES BOXES (REDESIGNED) --- */
+/* --- SERVICES BOXES (INTERACTIVE) --- */
 .services-section {
   padding: 100px 5%;
   max-width: 1600px;
@@ -164,8 +165,8 @@ body {
 }
 
 .service-card {
-  position: relative; /* Needed for watermark */
-  overflow: hidden; /* Clips the huge watermark */
+  position: relative;
+  overflow: hidden;
   padding: 40px 30px;
   height: 350px;
   display: flex;
@@ -174,36 +175,65 @@ body {
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   border-radius: 12px;
-  
-  /* GLASS BASE STYLE */
-  border: 1px solid rgba(128, 128, 128, 0.1);
-  backdrop-filter: blur(10px);
 }
 
-/* WATERMARK TYPOGRAPHY (The fix for "Empty" feel) */
+/* -- DARK MODE CARD BEHAVIOR -- */
+/* Default: Charcoal */
+.dark-mode .service-card {
+  background-color: #1A1A1A; 
+  border: 1px solid #333;
+  color: white;
+}
+
+/* Hover: Turns WHITE, Text turns BLACK */
+.dark-mode .service-card:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #fff;
+  transform: translateY(-10px);
+}
+
+/* -- LIGHT MODE CARD BEHAVIOR -- */
+/* Default: White */
+.light-mode .service-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  color: black;
+}
+
+/* Hover: Turns BLACK, Text turns WHITE */
+.light-mode .service-card:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000;
+  transform: translateY(-10px);
+}
+
+
+/* WATERMARK */
 .watermark {
   position: absolute;
   top: -20px;
   right: -20px;
-  font-size: 15rem; /* Massive size */
+  font-size: 15rem;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   line-height: 1;
-  opacity: 0.05; /* Very subtle */
-  pointer-events: none; /* Can't click it */
+  opacity: 0.05; 
+  pointer-events: none;
   z-index: 0;
   transition: transform 0.5s ease;
+  color: currentColor; /* Matches text color automatically */
 }
 
 .service-card:hover .watermark {
-  transform: rotate(-10deg) scale(1.1); /* Subtle movement on hover */
-  opacity: 0.1;
+  transform: rotate(-10deg) scale(1.1);
 }
 
-/* CONTENT STYLING */
+/* CONTENT */
 .card-top, .card-bottom {
   position: relative;
-  z-index: 1; /* Sits on top of watermark */
+  z-index: 1;
 }
 
 .card-top {
@@ -216,31 +246,6 @@ body {
 
 .card-bottom h4 { font-size: 2rem; font-weight: 400; margin-bottom: 10px; }
 .card-bottom p { font-size: 0.9rem; opacity: 0.7; font-family: 'Manrope', sans-serif; letter-spacing: 0.5px; }
-
-/* DARK MODE CARD STYLE */
-.dark-mode .service-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-}
-
-.dark-mode .service-card:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-10px);
-}
-
-/* LIGHT MODE CARD STYLE */
-.light-mode .service-card {
-  background: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.01) 100%);
-  border-color: rgba(0,0,0,0.05);
-}
-
-.light-mode .service-card:hover {
-  background: linear-gradient(135deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 100%);
-  border-color: rgba(0,0,0,0.1);
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-}
 
 .arrow { transition: transform 0.3s; }
 .service-card:hover .arrow { transform: translate(5px, -5px); }
@@ -279,7 +284,7 @@ body {
   /* Services Grid */
   .services-grid { grid-template-columns: 1fr; }
   .service-text { font-size: 3rem; }
-  .watermark { font-size: 10rem; } /* Smaller watermark on mobile */
+  .watermark { font-size: 10rem; } 
   
   /* Footer */
   .footer h2 { font-size: 2rem; }
