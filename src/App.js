@@ -48,13 +48,14 @@ function App() {
         </div>
       </nav>
 
-      {/* 3. HERO SECTION */}
+      {/* 3. HERO SECTION (Animation is now handled in CSS) */}
       <header className="hero-section">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
+          className="hero-content"
         >
           <h1 className="editorial-font">Pure <br/> Elegance</h1>
           <p className="subtitle">Simplicity is the ultimate sophistication.</p>
